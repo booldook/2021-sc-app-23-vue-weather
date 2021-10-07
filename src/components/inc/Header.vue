@@ -1,29 +1,23 @@
 <template>
   <header class="header-wrapper">
     <h1 class="logo">
-      <BIconCompass class="icon" />
+      <b-icon-compass />
       날씨앱
       <small>v 0.1</small>
     </h1>
-    <BBreadcrumb :items="items" />
+    <Nav />
   </header>
 </template>
 
 <script>
-import { BIconCompass, BBreadcrumb } from 'bootstrap-vue'
+import Nav from './Nav.vue'
 
 export default {
   name: 'Header',
-  components: {
-    BIconCompass,
-    BBreadcrumb
-  },
+  components: { Nav },
   data () {
     return {
-      items: [
-        { text: 'Daily', href: '/' },
-        { text: '5Days', href: '/5days' }
-      ]
+
     }
   }
 }
@@ -34,7 +28,9 @@ export default {
   @include flex($h: space-between);
   background-color: $dark-color;
   color: $light-color;
-  padding: .5em;
   font-size: 1.5em;
+  .logo {
+    padding: .5em;
+  }
 }
 </style>
