@@ -1,7 +1,13 @@
 <template>
   <div class="daily-wrapper">
-    <div>
-      {{ GET_COORDS.lat }} / {{ GET_COORDS.lon }}
+    <h2 class="city-wrap">
+      {{ GET_DAILY }}
+    </h2>
+    <div class="img-wrap">
+      <img src="" alt="">
+    </div>
+    <div class="temp-wrap">
+      {{  }}
     </div>
   </div>
 </template>
