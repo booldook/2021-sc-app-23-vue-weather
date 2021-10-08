@@ -1,5 +1,5 @@
 export default {
   coords: {},
-  daily: null,
+  daily: {},
   days: null
 }
