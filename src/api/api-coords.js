@@ -8,4 +8,16 @@ const apiCoords = () => {
   })
 }
 
-export default apiCoords
+const apiWatchCoords = (accuracy = false) => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.watchPosition((r) => {
+      resolve(r)
+    }, (err) => {
+      reject(err)
+    }, {
+      enableHighAccuracy: accuracy
+    })
+  })
+}
+
+export default { apiCoords, apiWatchCoords }

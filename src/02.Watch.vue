@@ -1,49 +1,32 @@
 <template>
   <div>
-    <h1>Count: {{ counter }}</h1>
-    <button @click="updateCounter">카운트 올리기</button>
-    <button @click="getLocation">위치정보 가져오기</button>
-    <h2>{{ getLat }} / {{ getLon }}</h2>
+    <h1>Count: {{ count }}</h1>
+    <button @click="updateCount">카운트 올리기</button>
   </div>
 </template>
 
 <script>
 // import { mapGetters } from 'vuex'
 
-import apiCoords from './api/api-coords'
+// import apiCoords from './api/api-coords'
 
 export default {
   name: 'Getters01',
   data () {
     return {
-      count: 0,
-      lat: 0,
-      lon: 0
+      count: 0
     }
   },
-  computed: { // 전역변수를 가공해서 새로운 값을 리턴
-    counter: function () {
-      return this.count + ' 입니다'
-    },
-    getLat: function () {
-      return `위도는 ${this.lat.toFixed(4)} 입니다.`
-    },
-    getLon: function () {
-      return `경도는 ${this.lon.toFixed(4)} 입니다.`
+  watch: {
+    // 1. 내가 변하면 함수를 실행한다.
+    // 2. 변수값이 바뀌면 자동으로 실행될 사항들을 선언
+    count: function (v, ov) {
+      console.log('지금 값:' + v, ' / 이전 값: ' + ov)
     }
   },
   methods: {
-    updateCounter () {
+    updateCount () {
       this.count++
-    },
-    async getLocation () {
-      try {
-        const { coords } = await apiCoords()
-        this.lat = coords.latitude
-        this.lon = coords.longitude
-      } catch (err) {
-        console.log(err)
-      }
     }
   }
 }
