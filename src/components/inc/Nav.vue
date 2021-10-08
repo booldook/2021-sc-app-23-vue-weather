@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="navi-wrap">
     <li>
       <router-link to="/">Daily</router-link>
     </li>
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
+ul.navi-wrap {
   @include flex;
   li {
     font-size: .75em;
