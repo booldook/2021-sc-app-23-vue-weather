@@ -1,34 +1,37 @@
 <template>
   <div>
     <button class="btn btn-primary" @click="getWeather">현재날씨 가져오기</button>
+    <button class="btn btn-primary" @click="clearWeather">날씨정보 가져오기 중지</button>
   </div>
 </template>
 
 <script>
-import { apiWatchCoords } from './api/api-coords'
+import { apiCoords } from './api/api-coords'
 // import apiDaily from './api/api-daily'
 
 export default {
   name: 'Weather04',
   data () {
     return {
-      lat: 0,
-      lon: 0,
+      coords: null,
       daily: null,
       interval: null
     }
   },
-  async created () {
-    // const { data } = await apiDaily(this.lat, this.lon)
-    // console.log(data)
+  watch: {
+    coords: async function (v, ov) {
+      console.log('hi', v)
+    }
   },
   methods: {
-    async getWeather () {
-      setInterval()
-      const coords = await apiWatchCoords(true)
-      console.log(coords)
-      // this.lat = coords.latitude
-      // this.lon = coords.longitude
+    getWeather () {
+      this.interval = setInterval(async function () {
+        const { coords } = await apiCoords()
+        this.coords = { lat: coords.latitude, lon: coords.longitude }
+      }.bind(this), 3000)
+    },
+    clearWeather () {
+      clearInterval(this.interval)
     }
   }
 }

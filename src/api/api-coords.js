@@ -20,4 +20,4 @@ const apiWatchCoords = (accuracy = false) => {
   })
 }
 
-export default { apiCoords, apiWatchCoords }
+export { apiCoords, apiWatchCoords }

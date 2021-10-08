@@ -5,9 +5,9 @@ const url = 'https://api.openweathermap.org/data/2.5/weather'
 // const icons = ['http://openweathermap.org/img/wn/', '@2x.png']
 const params = { units: 'metric', appid }
 
-const apiDaily = (lat, lon) => {
-  params.lat = lat
-  params.lon = lon
+const apiDaily = options => {
+  params.lat = options.lat
+  params.lon = options.lon
   return axios.get(url, { params })
 }
 
