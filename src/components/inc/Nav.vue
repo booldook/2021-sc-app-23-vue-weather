@@ -24,10 +24,6 @@ ul.navi-wrap {
     a {
       display: block;
       padding: .875em 1.25em;
-      &:hover {
-        color: inherit;
-        text-decoration: none;
-      }
     }
     &:hover {
       background-color: $secondary-color;
