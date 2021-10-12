@@ -1,7 +1,7 @@
 <template>
   <div class="days">
     <City :styled="{ size: '1.75em' }" :name="city" class="city" />
-    <ListWrap :list="GET_DAYS.list" class="list-wrap" />
+    <ListWrap class="list-wrap" />
   </div>
 </template>
 
@@ -51,6 +51,8 @@ export default {
   }
   .list-wrap {
     flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 11em)
   }
 }
 </style>
