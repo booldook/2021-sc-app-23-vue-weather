@@ -67,7 +67,7 @@ export default {
 <style lang="scss" scoped>
 .list {
   padding: 1em;
-  border-bottom: 1px solid $secondary-color;
+  border-bottom: 1px solid $light-color;
   @include flex;
   .img-wrap {
     margin-right: 1em;

@@ -2,7 +2,7 @@
   <div class="daily-wrapper">
     <City :styled="{ size: '2em' }" :name="city" class="city" />
     <Icon :styled="{ width: '100px' }" :src="src" class="icon" />
-    <Temp :styled="{ size: '1.5em', color: '#33c' }" :temp="temp" class="temp" />
+    <Temp :styled="{ size: '1.5em', color: '#181114' }" :temp="temp" class="temp" />
     <Description :styled="{ size: '1.75em' }" :desc="desc" class="desc" />
     <Wind :styled="{ size: '1.25em' }" :deg="deg" :speed="speed" class="wind" />
   </div>

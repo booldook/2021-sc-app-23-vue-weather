@@ -23,5 +23,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+ul {
+  @include flex($w: wrap);
+  li {
+    width: 49%;
+    margin-right: 1%;
+    @include MD {
+      font-size: .875em;
+    }
+    @include SM {
+      width: 99%;
+    }
+  }
+}
 </style>
