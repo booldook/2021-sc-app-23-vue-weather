@@ -3,10 +3,14 @@ import apiWeather from '../api/api-weather'
 import apiCity from '../api/api-city'
 import { DEF_COORDS } from '../modules/common'
 
-const ACT_COORDS = async ({ commit }) => {
+const ACT_COORDS = async ({ commit }, v) => {
   try {
-    const { lat, lon } = await apiCoords()
-    commit('MUT_COORDS', { lat, lon })
+    if (v) {
+      commit('MUT_COORDS', v)
+    } else {
+      const { lat, lon } = await apiCoords()
+      commit('MUT_COORDS', { lat, lon })
+    }
   } catch (err) {
     commit('MUT_COORDS', { lat: DEF_COORDS.lat, lon: DEF_COORDS.lon })
   }
