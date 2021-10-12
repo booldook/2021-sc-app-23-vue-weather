@@ -1,5 +1,9 @@
 <template>
   <div class="daily-wrapper">
+    <div class="city-wrap">
+      <h2 class="title">도시별 날씨 정보</h2>
+      <b-form-select v-model="selected" :options="options" size="lg" />
+    </div>
     <City :styled="{ size: '2em' }" :name="city" class="city" />
     <Icon :styled="{ width: '100px' }" :src="src" class="icon" />
     <Temp :styled="{ size: '1.5em', color: '#181114' }" :temp="temp" class="temp" />
@@ -21,9 +25,21 @@ import Wind from '../components/Wind.vue'
 
 export default {
   name: 'Daily',
+  data () {
+    return {
+      selected: null
+    }
+  },
   components: { City, Icon, Temp, Description, Wind },
   computed: {
-    ...mapGetters(['GET_COORDS', 'GET_DAILY']),
+    ...mapGetters(['GET_COORDS', 'GET_DAILY', 'GET_CITY']),
+    options: function () {
+      const city = []
+      this.GET_CITY.forEach((v, i) => {
+        if (i === 0) city.push({ value: null, text: '도시를 선택하세요' })
+      })
+      return city
+    },
     city: function () {
       return (this.GET_DAILY.cod === 200)
         ? `${this.GET_DAILY.name}, ${this.GET_DAILY.sys.country}`
@@ -62,6 +78,7 @@ export default {
   },
   created () {
     this.$store.dispatch('ACT_COORDS')
+    this.$store.dispatch('ACT_CITY')
   }
 }
 </script>
@@ -70,6 +87,16 @@ export default {
 .daily-wrapper {
   @include flex($h: center, $v: center);
   @include flexCol;
+  .city-wrap {
+    max-width: 300px;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    .title {
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: .5em;
+    }
+  }
   .city {
     margin-bottom: 1em;
   }
