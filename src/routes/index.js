@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import withComponent from '../components/hoc/withComponent'
+
 // 일괄 로딩
 import Daily from '../views/Daily.vue'
 // import Days from '../views/Days.vue'
@@ -27,12 +29,12 @@ const routes = [
   {
     path: '/users',
     name: 'Users',
-    component: Users
+    component: withComponent(Users)('https://jsonplaceholder.typicode.com/users')
   },
   {
     path: '/posts',
     name: 'Posts',
-    component: Posts
+    component: withComponent(Posts)('https://jsonplaceholder.typicode.com/posts')
   }
 ]
 

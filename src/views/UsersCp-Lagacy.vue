@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="v in lists" :key="v.id">
+        <tr v-for="v in users" :key="v.id">
           <td>{{ v.id }}</td>
           <td>{{ v.name }}</td>
           <td>{{ v.phone }}</td>
@@ -22,9 +22,21 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Users',
-  props: ['lists']
+  data () {
+    return {
+      users: []
+    }
+  },
+  async created () {
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    const { data } = await axios.get(url)
+    this.users = data
+    console.log(this.users)
+  }
 }
 </script>
 
