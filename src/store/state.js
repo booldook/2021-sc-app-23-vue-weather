@@ -1,6 +1,6 @@
 export default {
   coords: {},
   daily: {},
-  days: {},
-  city: []
+  city: [],
+  days: {}
 }
