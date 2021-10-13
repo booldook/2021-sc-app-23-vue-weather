@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-// 일괄 로딩
+// 일괄 로딩~
 import Daily from '../views/Daily.vue'
 // import Days from '../views/Days.vue'
 
